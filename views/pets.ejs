@@ -1,0 +1,30 @@
+<%- include("../layouts/header", {title: "Pets" }) %>
+    <%- include("../layouts/navbar") %>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <% if (data.length>0) { %>
+                        <% data.forEach(pet=> { %>
+                            <tr>
+                                <th scope="row"><%= pet.id%></th>
+                                <td><%= pet.name%></td>
+                                <td><%= pet.description%></td>
+                                <td><button class="btn btn-secondary" disabled="disabled">Edit</button></td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+
+                </tbody>
+            </table>
+        </div>
+        <%- include("../layouts/footer") %>
