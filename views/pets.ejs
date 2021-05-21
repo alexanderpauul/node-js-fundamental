@@ -1,6 +1,13 @@
 <%- include("../layouts/header", {title: "Pets" }) %>
     <%- include("../layouts/navbar") %>
         <div class="container">
+ 
+            <p class="h1">Pets</p>
+
+            <div class="d-grid gap-2 d-md-block py-3">
+                <a href="/pets/create" class="btn btn-primary me-md-2" type="button">New Pet</a>
+            </div>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -16,9 +23,11 @@
                         <% data.forEach(pet=> { %>
                             <tr>
                                 <th scope="row"><%= pet.id%></th>
-                                <td><%= pet.name%></td>
+                                <td><%= pet.petname%></td>
                                 <td><%= pet.description%></td>
-                                <td><button class="btn btn-secondary" disabled="disabled">Edit</button></td>
+                                <td><a href="/pets/id/<%= pet.id%>" 
+                                    class="btn btn-outline-success">View</a>
+                                </td>
                             </tr>
                         <% }) %>
                     <% } %>

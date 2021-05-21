@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Create schema
 const petSchema = new Schema({
-  name: String,
+  petname: String,
   description: String,
 });
 

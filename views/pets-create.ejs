@@ -1,0 +1,23 @@
+<%- include("../layouts/header", {title: "Create new pet!" }) %>
+    <%- include("../layouts/navbar") %>
+        <div class="container">
+            <div class="row justify-content-md-center py-5">
+                <form action="/pets/create" method="POST" class="col col-lg-6">
+                    <p class="h1 pb-2">Create</p>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="petname" placeholder="Pet name">
+                        <label for="petname">Pet name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="description" placeholder="Description">
+                        <label for="description">Description</label>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-success btn-lg" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%- include("../layouts/footer") %>

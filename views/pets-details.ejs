@@ -1,0 +1,76 @@
+<%- include("../layouts/header", {title: "Pet details!" }) %>
+    <%- include("../layouts/navbar") %>
+        <%- include("../layouts/svg") %>
+            <div class="container">
+                <div class="row justify-content-md-center py-5">
+                    <div class="col col-lg-6">
+                        <p class="h1 pb-2">Pet Details</p>
+
+                        <% if (response==false) { %>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <%= message%>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+
+                            <div class="d-grid gap-2 mt-3">
+                                <a class="btn btn-light py-3" type="submit" href="/pets">Go back to Pets list.</a>
+                            </div>
+                            <% } %>
+
+                                <% if (response==true) { %>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="row">
+                                                    <%= data.id%>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Name</th>
+                                                <td>
+                                                    <%= data.petname%>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Description</th>
+                                                <td>
+                                                    <%= data.description%>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <a href="/pets/edit/<%= data.id%>" class="btn btn-primary  btn-lg"
+                                            type="button">Edit</a>
+                                        <button class="btn btn-danger  btn-lg" type="button" id="btnDelete"
+                                            data-id="<%= data.id%>">Delete</button>
+                                        <a href="/pets" class="btn btn-secondary  btn-lg" type="button">Cancel</a>
+                                    </div>
+                                    <% } %>
+                                        </form>
+                    </div>
+                </div>
+                <%- include("../layouts/footer") %>
+
+
+                    <script>
+                        const btnDelete = document.querySelector("#btnDelete");
+                        btnDelete.addEventListener("click", async () => {
+                            try {
+                                const id = btnDelete.dataset.id;
+                                const data = await fetch(`/pets/${id}`, {
+                                    method: "delete"
+                                });
+                                const res = await data.json();
+
+                                if (res.response) {
+                                    window.location.href = "/pets"
+                                }
+                            } catch (error) {
+                                console.log(error);
+                            }
+                        });
+                    </script>

@@ -1,0 +1,49 @@
+<%- include("../layouts/header", {title: "Create new pet!" }) %>
+    <%- include("../layouts/navbar") %>
+        <div class="container">
+            <div class="row justify-content-md-center py-5">
+                <form id="petEditForm" class="col col-lg-6" data-id="<%= data.id%>">
+                    <p class="h1 pb-2">Edit</p>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="petname" placeholder="Pet name"
+                            value="<%= data.petname%>">
+                        <label for="petname">Pet name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="description" placeholder="Description"
+                            value="<%= data.description%>">
+                        <label for="description">Description</label>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-success btn-lg" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%- include("../layouts/footer") %>
+
+            <script>
+                const petEditForm = document.querySelector("#petEditForm");
+                petEditForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const petname = petEditForm.elements["petname"].value
+                    const description = petEditForm.elements["description"].value
+                    const id = petEditForm.dataset.id;
+
+                    const data = await fetch(`/pets/put/${id}`, {
+                        method: "put",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ petname, description })
+                    });
+
+                    const res = await data.json();
+
+                    if (res.response) {
+                        window.location.href = "/pets"
+                    }
+
+                })
+            </script>
