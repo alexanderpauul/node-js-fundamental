@@ -1,7 +1,24 @@
 <%- include("../layouts/header", {title: "Services" }) %>
     <%- include("../layouts/navbar") %>
-        <h1>Services View</h1>
-        <h2>
-            <%= serviceName%>
-        </h2>
+        <style>
+            .cover-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            .cover {
+                max-width: 42em;
+            }
+        </style>
+
+        <div class="cover-container py-5 px-3">
+            <div class="cover">
+                <h1>Pets option in menu:</h1>
+                <p class="lead">
+                    This is a CRUD that work with the No SQL Database -MongoDB. this option is for list and create pet,
+                    the fields storage in the DB are petname and description, the Id field is autogenerate by MongoDB
+                    option. To access it I use Mongoose library.
+                </p>
+            </div>
+        </div>
         <%- include("../layouts/footer") %>

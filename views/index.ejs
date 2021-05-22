@@ -1,7 +1,26 @@
 <%- include("../layouts/header", {title: "Dashboard" }) %>
-    <%- include("../layouts/navbar") %>
-        <h1>Index view</h1>
-        <h2>
-            <%= title%>
-        </h2>
-        <%- include("../layouts/footer") %>
+ 
+        <%- include("../layouts/navbar") %>
+
+            <style>
+                .cover-container {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .cover {
+                    max-width: 42em;
+                }
+            </style>
+
+            <div class="cover-container py-5 px-3">
+                <div class="cover">
+                    <h1>Veterinary for Node.js.</h1>
+                    <p class="lead">
+                        Node Fundamental is a small tutorial created by Bluuweb using node.js, express.js in
+                        order to learn the basic of node framework, the app has been published in heroku platform.
+                    </p>
+                </div>
+            </div>
+
+            <%- include("../layouts/footer") %>
